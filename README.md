@@ -1,6 +1,6 @@
-# todo-backend
+# TODO Backend
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure backend implementing http://www.todobackend.com/contribute.html
 
 ## Usage
 
