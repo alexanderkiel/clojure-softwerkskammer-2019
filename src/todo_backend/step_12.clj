@@ -65,13 +65,13 @@
 ;; need one function which does both: finding the todo and patching it. The
 ;; `update` function is a perfect match for this task. We used it before
 ;; updating the body a a request. Here we like to update the todo in a map from
-;; ID to todo. With `(update todo-store id f x)` we give `update` a function `f`
+;; ID to todo. With `(update todos id f x)` we give `update` a function `f`
 ;; and a value `x` were `f` will called with the old todo and the value `x`. As
 ;; function `f` we use `merge` here which merges the kv-pairs from two maps.
 ;; With that `merge` is essentially a synonym for patch.
 
-(defn patch-todo-at [todo-store id patch]
-  (update todo-store id merge patch))
+(defn patch-todo-at [todos id patch]
+  (update todos id merge patch))
 
 ;; You can try `patch-todo-at` here:
 

@@ -59,8 +59,8 @@
 
     {:status 405}))
 
-(defn patch-todo-at [todo-store id patch]
-  (update todo-store id merge patch))
+(defn patch-todo-at [todos id patch]
+  (update todos id merge patch))
 
 ;; We just add a DELETE case here using `dissoc` to remove the todo from our
 ;; store.
