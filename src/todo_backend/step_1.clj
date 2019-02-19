@@ -56,7 +56,7 @@
 
 (defn root-handler [request]
   {:status 200
-   :body "Hello"})
+   :body "Hello World"})
 
 ;; Like the ns-macro, `defn` is also a macro. The argument vector is the
 ;; following: `[name doc-string? [params*] body]`. So `root-handler` is the name
@@ -82,7 +82,7 @@
 
 (comment
   (def server
-    (http/start-server root-handler {:port 8081}))
+    (http/start-server root-handler {:port 8080}))
 
   (.close server)
   )

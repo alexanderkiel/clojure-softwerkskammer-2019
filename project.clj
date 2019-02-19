@@ -5,5 +5,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies
-  [[aleph "0.4.6"]
+  [[aleph "0.4.6"]                                          ; HTTP-Server
+   [cheshire "5.8.1"]                                       ; JSON
    [org.clojure/clojure "1.10.0"]])
