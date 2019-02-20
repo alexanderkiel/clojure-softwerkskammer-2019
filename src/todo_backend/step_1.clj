@@ -17,11 +17,12 @@
 
 ;; Lists are an integral part of every LISP (List Processing) and so also of
 ;; Clojure. The idea is to have a common syntax for everything. So everything is
-;; a list were the first element is a or names a function or macro and the rest
-;; of the elements are the arguments to that function. Lists are evaluated by
-;; calling the function with its arguments were arguments are evaluated first.
-;; Macros look like functions but are evaluated at compile time and there
-;; arguments are not evaluated first.
+;; a list were the first element is a function or macro and the rest of the
+;; elements are the arguments to that function. Lists are evaluated by calling
+;; the function with its arguments were arguments are evaluated first. Macros
+;; look like functions but are evaluated at compile time and their arguments are
+;; not evaluated first.
+
 
 ;; Here `ns` is a symbol naming the built-in macro ns. Symbols are like
 ;; identifiers in other languages. The arguments of the ns-macro can be queried
@@ -32,12 +33,13 @@
   )
 
 ;; It returns the argument vector `[name docstring? references*]`. A
-;; vector something like a list for now. The argument vector says that the ns
+;; vector is something like a list for now. The argument vector says that the ns
 ;; macro needs a name, followed by an optional docstring, and zero or more
 ;; references. We have the name `todo-backend.step-1`, a docstring and one
 ;; reference.
 
-;; The reference we use is used to refer to other namespaces. It's form is:
+
+;; The reference we use is used to refer to other namespaces. Its form is:
 
 (comment
   (:require [aleph.http :as http])
@@ -47,8 +49,9 @@
 ;; starts with a colon and is different from a symbol as it just refers to
 ;; itself. So it's not a name for something else. The list here doesn't
 ;; represent a function call. It's just a list the ns-macro takes as an
-;; argument because macros get there arguments unevaluated. With this macros
+;; argument because macros get their arguments unevaluated. With this macros
 ;; ca be used to build semantic structures which are not like function calls.
+
 
 ;; The next form is a function definition. It registers a function by its name
 ;; `root-handler` hat can be evaluated later. This function is our first simple
@@ -71,11 +74,12 @@
   )
 
 ;; In Clojure there is a specification defining the shape of requests and
-;; responses called Ring. There a response is a map with well defined key-value
-;; pairs. The most basic keys are `:status` and `:body`.
+;; responses called Ring. Ring defines the response as a map with well defined
+;; key-value pairs. The most basic keys are `:status` and `:body`.
+
 
 ;; With our handler in place, we can start a webserver passing our handler by
-;; referring it by its name with is the symbol `root-handler`. Passing a symbol
+;; referring it by its name which is the symbol `root-handler`. Passing a symbol
 ;; as argument to a function first resolves it to the thing it refers to. In
 ;; this case our handler function. The second argument to `http/start-server`
 ;; is an option map with the port to listen to.
@@ -87,4 +91,4 @@
   (.close server)
   )
 
-;; We define a name for our server in order to be able to stop is again.
+;; We define a name for our server in order to be able to stop it again.
