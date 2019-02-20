@@ -32,7 +32,8 @@
 
 ;; With middleware in place, we can "modify" the request before calling the
 ;; inner handler and "modify" the response before returning it. Here we add our
-;; headers to the response.
+;; headers to the response which we obtain from calling the `handler` function
+;; with the `request`.
 
 (defn wrap-cors-headers [handler]
   (fn [request]

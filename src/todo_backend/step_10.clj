@@ -67,7 +67,8 @@
 ;; To answer the GET requests for single todos, we create a `todo-handler`. In
 ;; that, we cut the ID out of the URL by splitting it and taking the last part.
 ;; We'll implement proper URL parsing later. Also only for now, we just filter
-;; the list of todos by ID.
+;; the list of todos by ID. Here `#(= id (:id %))` is a short variant to write
+;; an anonymous function were `%` is the only argument (in this case the todo).
 
 (defn todo-handler [request]
   (let [uri (:uri request)
@@ -77,7 +78,7 @@
        :body (render-todo todo)}
       {:status 404})))
 
-;; Because now we have to handlers, we need to implement a routing. To keep it
+;; Because now we have two handlers, we need to implement a routing. To keep it
 ;; simple we don't use a library for now. A simple `if` will do it here.
 
 (defn router [request]

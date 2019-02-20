@@ -1,5 +1,5 @@
 (ns todo-backend.step-1
-  "Step 1 - Create a webserver returning just Hello."
+  "Step 1 - Create a backend returning just Hello."
   (:require
     [aleph.http :as http]))
 
@@ -55,7 +55,7 @@
 
 ;; The next form is a function definition. It registers a function by its name
 ;; `root-handler` hat can be evaluated later. This function is our first simple
-;; handler for our webserver.
+;; handler for our backend.
 
 (defn root-handler [request]
   {:status 200
@@ -73,12 +73,14 @@
   (root-handler nil)
   )
 
+
 ;; In Clojure there is a specification defining the shape of requests and
 ;; responses called Ring. Ring defines the response as a map with well defined
-;; key-value pairs. The most basic keys are `:status` and `:body`.
+;; key-value pairs. The most basic keys are `:status` and `:body`. A handler
+;; itself is just a function which takes a request and returns a response.
 
 
-;; With our handler in place, we can start a webserver passing our handler by
+;; With our handler in place, we can start a backend passing our handler by
 ;; referring it by its name which is the symbol `root-handler`. Passing a symbol
 ;; as argument to a function first resolves it to the thing it refers to. In
 ;; this case our handler function. The second argument to `http/start-server`

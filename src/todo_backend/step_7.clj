@@ -65,6 +65,23 @@
 ;; exactly that. JSON objects become Clojure maps, JSON Arrays Clojure Lists,
 ;; strings, numbers and booleans remain.
 
+;; In order to be able to use the POTSed `todo` in twice, firstly to store it
+;; and secondly to return it, we use a `let` macro to bind it locally. The `let`
+;; macro consists of a vector (the binding vector) and a body. The binding
+;; vector takes symbol/expression pairs were the symbol will be bound to the
+;; return value of the expression. With every symbol/expression pair, `let`
+;; opens a new lexical scope were the symbols are bound to the expression return
+;; values.
+
+(comment
+  (let [x 1]
+    x)
+
+  (let [x 1
+        y (inc x)]
+    [x y])
+  )
+
 (defn root-handler [request]
   (case (:request-method request)
     :get
